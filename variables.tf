@@ -25,14 +25,10 @@ variable "create_date" {
   description = "Placeholder - usually passed in from caller."
 }
 
-variable "rg_name" {
-  description = "Resource group name"
-}
-
 # Compute default name values
 locals {
   env_id              = "${lookup(module.naming.env-map, var.environment, "ENV")}"
-  type                = "${lookup(module.naming.type-map, "azurerm_app_service", "TYP")}"
+  type                = "${lookup(module.naming.type-map, "azurerm_resource_group", "TYP")}"
 
   default_rgid        = "${var.rgid != "" ? var.rgid : "NORGID"}"
   default_name_prefix = "c${local.default_rgid}${local.env_id}"
