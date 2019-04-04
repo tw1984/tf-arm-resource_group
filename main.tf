@@ -6,4 +6,7 @@ resource "azurerm_resource_group" "rg" {
       "tags"
     ]
   }
+  tags {
+    InfrastructureAsCode = "True"
+  }
 }
