@@ -1,11 +1,13 @@
 resource "azurerm_resource_group" "rg" {
-  name = "${local.name}"
+  name     = "${local.name}"
   location = "${var.location}"
+
   lifecycle {
     ignore_changes = [
-      "tags"
+      "tags",
     ]
   }
+
   tags {
     InfrastructureAsCode = "True"
   }
