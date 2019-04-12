@@ -32,7 +32,7 @@ variable "rgid" {
 }
 
 module "rg" {
-  source = "git::ssh://git@github.com/clearesult/cr-azurerm_resource_group.git"
+  source = "git::https://github.com/clearesult/cr-azurerm_resource_group.git"
   create_date = "${var.create_date}"
   rgid = "${var.rgid}"
 }
