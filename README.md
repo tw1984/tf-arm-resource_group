@@ -2,6 +2,8 @@
 
 Creates an resource group.
 
+This module now requires terraform 0.12.  If you need 0.11 compatibility, please reference an older release tag.
+
 # IMPORTANT - Inter-module dependencies
 
 The resource group is a dependency for all things that are created inside it, so it must already be fully provisioned before using any of the other CR Terraform modules.  The `depends_on` Terraform keyword is not supported for module dependencies in 0.11, but there is some work that should make it into v0.12, not yet released.
@@ -33,7 +35,7 @@ variable "rgid" {
 
 module "rg" {
   source = "git::https://github.com/clearesult/cr-azurerm_resource_group.git"
-  create_date = "${var.create_date}"
-  rgid = "${var.rgid}"
+  create_date = var.create_date
+  rgid = var.rgid
 }
 ```

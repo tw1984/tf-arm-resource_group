@@ -1,24 +1,31 @@
+# Version constraint required as of 6 June 2019
+# Ref: https://github.com/hashicorp/terraform/issues/21235
+provider "azuread" {
+  version = "= 0.3.1"
+}
+
+data "azurerm_subscription" "primary" {}
+
 resource "azurerm_resource_group" "rg" {
-  name     = "${local.name}"
-  location = "${var.location}"
+  name     = local.name
+  location = var.location
 
   lifecycle {
-    ignore_changes = [
-      "tags",
-    ]
+    ignore_changes = [tags]
   }
 
-  tags {
+  tags = {
     InfrastructureAsCode = "True"
   }
 }
 
 resource "azuread_group" "reader" {
-  name = "g${local.default_rgid}${local.env_id}${local.rg_type}_AZ_Reader"
+  name = format("g%s%s%s_AZ_Reader",local.default_rgid,local.env_id,local.rg_type)
 }
 
 resource "azurerm_role_assignment" "reader" {
-  scope                = "/subscriptions/${var.subscription_id}/resourceGroups/${local.name}"
+  scope                = format("%s/resourceGroups/%s", data.azurerm_subscription.primary.id, azurerm_resource_group.rg.name)
   role_definition_name = "Reader"
-  principal_id         = "${azuread_group.reader.id}"
+  principal_id         = azuread_group.reader.id
 }
+
