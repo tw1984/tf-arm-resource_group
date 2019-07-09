@@ -1,9 +1,3 @@
-# Version constraint required as of 6 June 2019
-# Ref: https://github.com/hashicorp/terraform/issues/21235
-provider "azuread" {
-  version = "= 0.3.1"
-}
-
 data "azurerm_subscription" "primary" {}
 
 resource "azurerm_resource_group" "rg" {
@@ -20,7 +14,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azuread_group" "reader" {
-  name = format("g%s%s%s_AZ_Reader",local.default_rgid,local.env_id,local.rg_type)
+  name = format("g%s%s%s_AZ_Reader", local.default_rgid, local.env_id, local.rg_type)
 }
 
 resource "azurerm_role_assignment" "reader" {
