@@ -3,10 +3,10 @@ output "id" {
 }
 
 output "readerId" {
-  value = [azuread_group.reader.*.id]
+  value = azuread_group.reader.*.id
 }
 
 output "readerName" {
-  value = [azuread_group.reader.*.name]
+  value = azuread_group.reader.*.name
 }
 
