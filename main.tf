@@ -1,4 +1,6 @@
-data "azurerm_subscription" "primary" {}
+data "azurerm_subscription" "primary" {
+  subscription_id = var.subscription_id
+}
 
 resource "azurerm_resource_group" "rg" {
   name     = local.name
