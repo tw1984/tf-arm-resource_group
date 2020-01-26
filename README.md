@@ -1,8 +1,8 @@
-# cr-azurerm_resource_group
+# tf-arm-resource_group
 
 Creates an resource group.
 
-This module now requires terraform 0.12.  If you need 0.11 compatibility, please reference an older release tag.
+This module now requires terraform 0.12.
 
 # IMPORTANT - Inter-module dependencies
 
@@ -34,7 +34,7 @@ variable "rgid" {
 }
 
 module "rg" {
-  source = "git::https://github.com/clearesult/cr-azurerm_resource_group.git"
+  source = "git::https://github.com/tw1984/tf-arm-resource_group.git"
   create_date = var.create_date
   rgid = var.rgid
 }
