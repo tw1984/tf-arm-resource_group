@@ -34,7 +34,7 @@ locals {
   rg_type = lookup(module.naming.type-map, "azurerm_resource_group", "TYP")
 
   default_rgid        = var.rgid != "" ? var.rgid : "NORGID"
-  default_name_prefix = format("c%s%s", local.default_rgid, local.env_id)
+  default_name_prefix = format("hl%s%s", local.default_rgid, local.env_id)
 
   name_prefix = var.name_prefix != "" ? var.name_prefix : local.default_name_prefix
   name        = format("%s%s001%s", local.name_prefix, local.type, var.create_date)
