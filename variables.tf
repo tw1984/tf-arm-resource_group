@@ -22,6 +22,10 @@ variable "create_date" {
   description = "Placeholder - usually passed in from caller."
 }
 
+variable "subscription_id" {
+  description = "Prompt for subscription ID"
+}
+
 # Compute default name values
 locals {
   env_id = lookup(module.naming.env-map, var.environment, "ENV")
