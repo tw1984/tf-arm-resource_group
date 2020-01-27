@@ -38,6 +38,6 @@ locals {
 
 # This module provides a data map output to lookup naming standard references
 module "naming" {
-  source = "git::https://github.com/tw1984/tf-arm-naming.git?ref=v0.5"
+  source = "git::https://github.com/tw1984/tf-arm-naming.git?ref=v0.5.1"
 }
 
