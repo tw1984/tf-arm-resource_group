@@ -9,7 +9,7 @@ variable "location" {
 
 variable "name_prefix" {
   default     = ""
-  description = "Allows users to override the standard naming prefix.  If left as an empty string, the standard naming conventions will apply."
+  description = "Allows users to override the predefined naming prefix.  If left as an empty string, the predefined naming conventions will apply."
 }
 
 variable "environment" {
